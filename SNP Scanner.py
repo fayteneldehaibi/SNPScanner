@@ -237,8 +237,8 @@ class Form(QtWidgets.QDialog):
             AA = a / totalCount
             BB = b / totalCount
             #if (a > 20 and b > 20) and ((((0.05 * AA) <= BB) and ((0.1 * AA) >= BB)) or (((0.05 * BB) <= AA) and ((0.1 * BB) >= AA))):  # rare SNPs
-            if (a > 0 and b > 0) and ((((0.05 * AA) <= BB) and ((0.1 * AA) >= BB)) or (((0.05 * BB) <= AA) and ((0.1 * BB) >= AA))):  # 'rare' SNP nonsurvivors
-            #if all([a > 20, b > 20, AA*0.9 <= BB, AA*1.1 >= BB]):#equal distribution SNPs
+            #if (a > 0 and b > 0) and ((((0.05 * AA) <= BB) and ((0.1 * AA) >= BB)) or (((0.05 * BB) <= AA) and ((0.1 * BB) >= AA))):  # 'rare' SNP nonsurvivors
+            if all([a > 20, b > 20, AA*0.9 <= BB, AA*1.1 >= BB]):#equal distribution SNPs
                 SNPname = self.data.loc[i,'Name']
                 goodSNPs.append(SNPname)
                 SNPsAndPatientsAA[SNPname] = list(checkAA.loc[i,:].dropna(axis=0,how='all').index)
