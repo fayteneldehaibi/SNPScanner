@@ -202,9 +202,10 @@ class Form(QtWidgets.QDialog):
         deathRow = deathRow[deathRow.isin(['Death'])]
         deathRow = deathRow.dropna(axis='columns', how='all')
         deadPats = list(deathRow.columns)
+        deadPats_ = [c for c in list(self.dataTable.columns) if c not in deadPats]
         #deadPats_ = list(self.data.columns[:12]) + deadPats  # for nonsurvivor runs
-        deadPats_ = list(self.data.columns[:12]) + ['HR-056','HR-341','HR-423','HR-426','HR-454','HR-1005','HR-1139','HR-1194','HR-1283',
-                                                    'HR-198','HR-224','HR-260']  # for survivor matched run #HR-1261?
+        #deadPats_ = list(self.data.columns[:12]) + ['HR-056','HR-341','HR-423','HR-426','HR-454','HR-1005','HR-1139','HR-1194','HR-1283',
+        #                                            'HR-198','HR-224','HR-260']  # for survivor matched run #HR-1261?
         self.data = self.data.loc[allRows,deadPats_]
         print('Checking genotypes...')
         checkAA = self.data[self.data.isin(['AA'])]
